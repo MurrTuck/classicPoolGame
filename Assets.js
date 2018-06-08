@@ -1,6 +1,15 @@
 let sprites = {};
 let assetsStillLoading = 0;
 
+function assetsLoadingLoop(callback) {
+    if(assetsStillLoading){
+        requestAnimationFrame(assetsLoadingLoop.bind(this,callback))
+    }
+    else{
+
+    }
+}
+
 function loadAssets(callback){
 
     function loadSprite(fileName){
@@ -17,4 +26,6 @@ function loadAssets(callback){
     }
     sprites.background = loadSprite('spr_background4.png')
     sprites.stick = loadSprite('spr_stick.png')
+
+    assetsLoadingLoop(callback);
 }
