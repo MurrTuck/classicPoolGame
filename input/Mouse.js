@@ -38,7 +38,7 @@ function MouseHandler() {
 
     this.left = new ButtonState();
     this.middle = new ButtonState();
-    this.right = ButtonState();
+    this.right = new ButtonState();
 
     this.position = new Vector2();
 

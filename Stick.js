@@ -7,8 +7,8 @@ Stick.prototype.update = function(){
     this.position = Mouse.position;
 
     if(Mouse.left.pressed){
+        console.log("Left Button is pressed!")
     }
-    console.log("Left Button is pressed!")
 }
 
 Stick.prototype.draw = function (){
