@@ -1,13 +1,16 @@
+const DELTA = 1/100;
+
 function GameWorld(){
 
     this.whiteBall = new Ball(new Vector2(413, 413));
-    this.stick = new Stick(new Vector2(413, 413), this.whiteBall.shoot);
+    this.stick = new Stick(new Vector2(413, 413),this.whiteBall.shoot.bind(this.whiteBall)
+    );
 }
 
 GameWorld.prototype.update = function(){
 
     this.stick.update();
-    this.whiteBall.update();
+    this.whiteBall.update(DELTA);
 
 }
 

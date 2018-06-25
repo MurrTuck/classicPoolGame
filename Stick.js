@@ -42,6 +42,7 @@ Stick.prototype.increasePower = function(){
 }
 
 Stick.prototype.shoot = function(){
+    
     this.onShoot(this.power, this.rotation)
     this.power = 0;
     this.origin = STICK_SHOT_ORIGIN.copy();
