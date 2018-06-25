@@ -12,6 +12,10 @@ GameWorld.prototype.update = function(){
     this.stick.update();
     this.whiteBall.update(DELTA);
 
+    if(!this.ballsMoving() && this.stick.shot){
+        this.stick.reposition(this.whiteBall.position);
+    }
+
 }
 
 GameWorld.prototype.draw = function (){
@@ -20,4 +24,8 @@ GameWorld.prototype.draw = function (){
 
         this.stick.draw()
         this.whiteBall.draw()
+}
+
+GameWorld.prototype.ballsMoving = function(){
+    return this.whiteBall.moving;
 }
