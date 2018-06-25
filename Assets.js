@@ -33,3 +33,10 @@ function loadAssets(callback){
 
     assetsLoadingLoop(callback);
 }
+
+function getBallSpriteByColor(color){
+    switch(color){
+        case COLOR.RED:
+        return sprites.redBall;
+    }
+}

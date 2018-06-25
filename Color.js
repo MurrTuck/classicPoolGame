@@ -4,3 +4,4 @@ const COLOR = {
     BLACK: 3,
     WHITE: 4
 }
+
