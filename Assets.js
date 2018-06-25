@@ -37,6 +37,12 @@ function loadAssets(callback){
 function getBallSpriteByColor(color){
     switch(color){
         case COLOR.RED:
-        return sprites.redBall;
+            return sprites.redBall;
+        case COLOR.YELLOW:
+            return sprites.yellowBall;
+        case COLOR.BLACK:
+            return sprites.blackBall;
+        case COLOR.WHITE:
+            return sprites.whiteBall;
     }
 }
