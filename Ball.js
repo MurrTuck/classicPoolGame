@@ -111,7 +111,7 @@ Ball.prototype.collideWithTable = function(table){
     }
 
     if (collided){
-        this.velocity = this. velocity.mult(0.98);
+        this.velocity = this.velocity.mult(0.98);
     }
 
 }
