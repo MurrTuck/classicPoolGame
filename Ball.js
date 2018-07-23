@@ -91,21 +91,25 @@ Ball.prototype.collideWithTable = function(table){
     let collided = false;
 
     if(this.position.y <= table.TopY + BALL_RADIUS){
+        this.position.y = table.TopY + BALL_RADIUS;
         this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
         collided = true;
     }
 
     if (this.position.x >= table.RightX - BALL_RADIUS) {
+        this.position.x = table.RightX - BALL_RADIUS
         this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
         collided = true;
     }
 
     if (this.position.y >= table.BottomY - BALL_RADIUS) {
+        this.position.y = table.BottomY - BALL_RADIUS;
         this.velocity = new Vector2(this.velocity.x, -this.velocity.y);
         collided = true;
     }
 
     if (this.position.x <= table.LeftX + BALL_RADIUS) {
+        this.position.x = table.LeftX + BALL_RADIUS;
       this.velocity = new Vector2(-this.velocity.x, this.velocity.y);
       collided = true;
     }
@@ -116,13 +120,13 @@ Ball.prototype.collideWithTable = function(table){
 
 }
 
-Ball.prototype.collideWith = function(object) {
+// Ball.prototype.collideWith = function(object) {
 
-    if(object instanceof Ball){
-        this.collideWithBall(object);
-    }
-    else{
-        this.collideWithTable(object);
-    }
+//     if(object instanceof Ball){
+//         this.collideWithBall(object);
+//     }
+//     else{
+//         this.collideWithTable(object);
+//     }
   
-};
+// };

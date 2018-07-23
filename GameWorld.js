@@ -36,11 +36,13 @@ function GameWorld() {
 
 GameWorld.prototype.handleCollisions = function(){
   for(let i = 0 ; i< this.balls.length ; i++ ){
-    this.balls[i].collideWith(this.table);
+
+    this.balls[i].collideWithTable(this.table);
+
     for(let j = i + 1; j < this.balls.length ; j++){
       const firstBall = this.balls[i];
       const secondBall = this.balls[j];
-      firstBall.collideWith(secondBall);
+      firstBall.collideWithBall(secondBall);
     }
   }
 }
