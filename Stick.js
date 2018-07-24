@@ -1,38 +1,33 @@
-const STICK_ORIGIN = new Vector2(970, 11);
-const STICK_SHOT_ORIGIN = new Vector2(950, 11);
-const MAX_POWER = 7500;
-
-function Stick(position, onShoot){
+function Stick(position, onShoot) {
     this.position = position;
     this.rotation = 0;
-    this.origin = STICK_ORIGIN.copy();
+    this.origin = CONSTANTS.stickOrigin.copy();
     this.power = 0;
     this.onShoot = onShoot;
     this.shot = false;
 }
 
-Stick.prototype.update = function(){
+Stick.prototype.update = function () {
 
-    if(this.shot){
+    if (this.shot) {
         return;
     }
-    if(Mouse.left.down){
+    if (Mouse.left.down) {
         this.increasePower();
     }
-    else if(this.power > 0) {
+    else if (this.power > 0) {
         this.shoot();
     }
 
     this.updateRotation();
 
-
 }
 
-Stick.prototype.draw = function (){
+Stick.prototype.draw = function () {
     Canvas.drawImage(sprites.stick, this.position, this.origin, this.rotation);
 }
 
-Stick.prototype.updateRotation = function() {
+Stick.prototype.updateRotation = function () {
 
     let opposite = Mouse.position.y - this.position.y;
     let adjacent = Mouse.position.x - this.position.x;
@@ -40,26 +35,27 @@ Stick.prototype.updateRotation = function() {
     this.rotation = Math.atan2(opposite, adjacent);
 }
 
-Stick.prototype.increasePower = function(){
+Stick.prototype.increasePower = function () {
 
-    if(this.power > MAX_POWER){
+    if (this.power > CONSTANTS.maxShotPower) {
         return;
     }
-    // Change numbers below to add power to stick hitting balls.
-    this.power += 120;
-    this.origin.x += 5;
+
+    this.power += CONSTANTS.powerInterval;
+    this.origin.x += CONSTANTS.originXInterval;
 }
 
-Stick.prototype.shoot = function(){
+Stick.prototype.shoot = function () {
 
-    this.onShoot(this.power, this.rotation)
+    this.onShoot(this.power, this.rotation);
     this.power = 0;
-    this.origin = STICK_SHOT_ORIGIN.copy();
+    this.origin = CONSTANTS.stickShotOrigin.copy();
     this.shot = true;
 }
 
-Stick.prototype.reposition = function(position){
-    this.position = position.copy()
-    this.origin = STICK_ORIGIN.copy()
+Stick.prototype.reposition = function (position) {
+
+    this.position = position.copy();
+    this.origin = CONSTANTS.stickOrigin.copy();
     this.shot = false;
 }
